@@ -51,7 +51,7 @@ section.main{
 
 input{
     flex: 1;
-    padding: 1.2em;
+    padding: 1em;
     border: none;
     outline: none;
     background: transparent;
@@ -61,7 +61,7 @@ input{
 
 
 button{
-    padding: 1.2em 0em;
+    padding: 1em 0em;
     width: 30%;
     border-radius: 30px;
 
@@ -125,14 +125,24 @@ ul.tasks li span:hover{
 
 @media (max-width:660px) {
     .todo h3{
-        font-size: 20px;
+        font-size: 19px;
     }
     button{
         width: 45%;
         padding: 1em;
     }   
     ul.tasks li{
-        font-size: 15px;
-        padding: 1em 2em;
+        font-size: 13px;
+        font-weight: bold;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 0.6em 1.5em;
+    }
+    ul.tasks li::before{
+        width: 14px;
+        height: 14px;
+    }
+
+    ul.tasks li span{
+        width: 16px;
     }
 }
