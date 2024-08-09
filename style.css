@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
-    /* border: solid 1px pink; */
 }
 body{
     font-family: 'Courier New', Courier, monospace;
@@ -27,7 +26,7 @@ section.main{
 }
 
 .todo{
-    width: 60%;
+    width: 80%;
     margin: 6em auto 0;
     padding: 1.5em;
     background-color: #fff;
@@ -36,7 +35,14 @@ section.main{
 }
 
 .todo h3{
-    font-size: 24px;
+    font-size: 23px;
+    animation: move-text 5s linear infinite;
+}
+
+@keyframes move-text {
+    100%{
+        letter-spacing: 5px;
+    }
 }
 
 .form-group{
@@ -45,13 +51,14 @@ section.main{
     margin: 1em 0;
 
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
+    gap: 0.7em;
 }
 
 input{
-    flex: 1;
     padding: 1em;
+    border-radius: 30px;
     border: none;
     outline: none;
     background: transparent;
@@ -59,17 +66,29 @@ input{
     color: blue;
 }
 
+input::placeholder{
+    color: blue;
+}
+
 
 button{
-    padding: 1em 0em;
-    width: 30%;
+    padding: 1em 3em;
     border-radius: 30px;
 
-    background-color: blue;
+    background: linear-gradient(45deg,deeppink,deeppink,blue,blue,deeppink,deeppink);
+    background-size: 100% 200%;
     color: #fff;
     font-family: cursive;
     border: none;
     cursor: pointer;
+
+    animation: move-color-button 10s ease infinite;
+}
+
+@keyframes move-color-button {
+    0%{background-position: top;}
+    50%{background-position: bottom;}
+    100%{background-position: top;}
 }
 
 ul.tasks{
@@ -78,7 +97,7 @@ ul.tasks{
 }
 
 ul.tasks li{
-    padding: 0.8em 2em;
+    padding: 0.7em 1.8em;
     position: relative;
 
     text-transform: uppercase;
@@ -89,8 +108,8 @@ ul.tasks li{
 ul.tasks li::before{
     content: '';
     background-color: red;
-    width: 25px;
-    height: 25px;
+    width: 23px;
+    height: 23px;
     border-radius: 50%;
     position: absolute;
     left: 0px;
@@ -107,7 +126,7 @@ ul.tasks li.checked::before{
 
 ul.tasks li span{
     position: absolute;
-    right: 0;
+    right: 5px;
     width: 23px;
     text-align: center;
     border: solid 1px red;
@@ -123,26 +142,34 @@ ul.tasks li span:hover{
     color: #fff;
 }
 
-@media (max-width:660px) {
-    .todo h3{
-        font-size: 19px;
+@media (max-width:600px) {
+    .form-group{
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        border-radius: 0;
+        background: transparent;
+    }
+    input{
+        text-align: center;
+        border-bottom: double 3px blue;
+        border-radius: 0;
     }
     button{
-        width: 45%;
-        padding: 1em;
-    }   
-    ul.tasks li{
-        font-size: 13px;
-        font-weight: bold;
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        padding: 0.6em 1.5em;
+        margin-top: 0.5em;
     }
-    ul.tasks li::before{
-        width: 14px;
-        height: 14px;
+    ul.tasks li{
+        padding: 0.8em 1.6em 1em 1.5em;
+        font-size: 13px;
+        font-weight: 900;
     }
 
     ul.tasks li span{
         width: 16px;
+    }
+
+    ul.tasks li::before{
+        width: 15px;
+        height: 15px;
     }
 }
